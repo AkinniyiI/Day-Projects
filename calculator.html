@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+    <style>
+      .container {
+        width: 250px;
+        border: 1px red solid;
+        overflow: hidden;
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+        padding: 5px;
+      }
+
+      .btn {
+        width: 25%;
+        padding: 10px;
+        border: none;
+      }
+
+      #output {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        background-color: bisque;
+      }
+
+      .operations {
+        background-color: blueviolet;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <input type="text" id="output" readonly />
+      </div>
+
+      <div class="row">
+        <button class="btn" onclick="inputDigit('7')">7</button>
+        <button class="btn" onclick="inputDigit('8')">8</button>
+        <button class="btn" onclick="inputDigit('9')">9</button>
+        <button class="btn operations" onclick="inputDigit('/')">%</button>
+      </div>
+
+      <div class="row">
+        <button class="btn" onclick="inputDigit('4')">4</button>
+        <button class="btn" onclick="inputDigit('5')">5</button>
+        <button class="btn" onclick="inputDigit('6')">6</button>
+        <button class="btn operations" onclick="inputDigit('*')">x</button>
+      </div>
+
+      <div class="row">
+        <button class="btn" onclick="inputDigit('1')">1</button>
+        <button class="btn" onclick="inputDigit('2')">2</button>
+        <button class="btn" onclick="inputDigit('3')">3</button>
+        <button class="btn operations" onclick="inputDigit('+')">+</button>
+      </div>
+
+      <div class="row">
+        <button class="btn" onclick="clearOutput()">AC</button>
+        <button class="btn" onclick="backspaceOutput()">C</button>
+        <button class="btn operations" onclick="inputDigit('-')">-</button>
+        <button class="btn operations" onclick="operate()">=</button>
+      </div>
+    </div>
+
+    <script>
+      const outputBox = document.getElementById("output");
+
+      function inputDigit(value) {
+        const x = outputBox.value;
+        outputBox.value = x + value;
+        console.log(value);
+      }
+
+      function clearOutput() {
+        document.getElementById("output").value = "";
+      }
+
+      function backspaceOutput() {
+        const currentValue = outputBox.value;
+        let newValue = currentValue.slice(0, -1);
+        outputBox.value = newValue;
+        console.log(newValue);
+      }
+
+      function operate() {
+        const currentValue = outputBox.value;
+        //let newValue = currentValue.split("");
+        let newValue = eval(currentValue);
+        outputBox.value = newValue;
+        console.log(newValue);
+      }
+    </script>
+  </body>
+</html>
