@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+
+    <style>
+      .container {
+        width: 400px;
+        border: 1px red solid;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+      }
+
+      .add {
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        background-color: antiquewhite;
+        color: bisque;
+        border: 1px black solid;
+        height: 25px;
+        border-radius: 25px 0px 0px 25px;
+      }
+      #addButton {
+        border-radius: 0px 25px 25px 0px;
+        border: 1px black dotted;
+        background-color: rgb(5, 90, 169);
+        color: greenyellow;
+        padding: 8px;
+      }
+      input {
+        color: black;
+        padding: 15px;
+        height: 5px;
+      }
+
+      #addButton:hover {
+        background-color: blueviolet;
+      }
+      #addButton:active {
+        background-color: rgb(29, 2, 55);
+      }
+      .list-div {
+        width: 300px;
+        word-wrap: break-word;
+      }
+      ol {
+        list-style: none;
+        transform: scaleY(-1);
+      }
+      li {
+        font-size: 18px;
+        transform: scaleY(-1);
+        cursor: pointer;
+        margin-bottom: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .crossed {
+        text-decoration: line-through;
+      }
+
+      .removeButton {
+        background-color: grey;
+
+        justify-content: space-between;
+        border-radius: 25%;
+        box-shadow: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+
+      <div class="add">
+        <input id="inputBox" type="text" />
+        <button id="addButton" onclick="addItem()">ADD</button>
+      </div>
+
+      <div class="list-div">
+        <ol id="listContainer"></ol>
+      </div>
+    </div>
+
+    <script>
+      const addButton = document.getElementById("addButton");
+      // const listElement = document.getElementById("listItem");
+      const userItems = [];
+
+      function addItem() {
+        const inputElement = document.getElementById("inputBox");
+
+        let inputValue = inputElement.value.trim();
+        if (inputElement.value === " ") return;
+
+        inputElement.value = "";
+
+        const newItem = document.createElement("li");
+        newItem.textContent = inputValue;
+        newItem.classList.add("todo");
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "X";
+        removeBtn.classList.add("removeButton");
+
+        //const textNode = document.createTextNode(inputValue);
+        newItem.appendChild(removeBtn);
+
+        // userItems.push(newItem);
+        // newItem.appendChild(textNode);
+
+        // newDiv.classList.add("my-class");
+        // newDiv.setAttribute("id", "new-element-id");
+
+        removeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          newItem.remove();
+        });
+
+        //const listContainer = document.getElementById("listContainer");
+        //   const currentDiv = document.getElementById("parent-container");
+        listContainer.appendChild(newItem);
+      }
+
+      const listContainer = document.getElementById("listContainer");
+      listContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("todo")){
+          e.target.classList.toggle("crossed");
+        }
+      });
+
+      //add eventlsit for click in list, check if has class thn=en add cross
+      //create button, comfigure, appehend
+      // const removeBtn = document.createElement("button");
+
+      // function addClass() {
+      //   removeBtn.textContent = "X";
+      //   removeBtn.classList.add("removeButton");
+    </script>
+  </body>
+</html>
