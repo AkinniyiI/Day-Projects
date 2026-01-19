@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traffic lights</title>
+    <style>
+      .container {
+        display: flex;
+        width: 600px;
+        height: 400px;
+        background-color: burlywood;
+        justify-content: space-between;
+        padding: 80px 30px 30px 30px;
+      }
+      .traffic {
+        background-color: black;
+        width: 200px;
+        border-radius: 45px;
+      }
+      .box {
+        background-color: grey;
+        height: 30%;
+        border-radius: 50%;
+        margin: 10px;
+      }
+      .stop {
+        background-color: red;
+        height: 30%;
+        border-radius: 50%;
+        margin: 10px;
+      }
+      .ready {
+        background-color: orange;
+        height: 30%;
+        border-radius: 50%;
+        margin: 10px;
+      }
+      .go {
+        background-color: green;
+        height: 30%;
+        border-radius: 50%;
+        margin: 10px;
+      }
+      .idle {
+        background-color: gray;
+      }
+      .timer {
+        display: flex;
+        flex-direction: column;
+      }
+      #startBtn {
+        background-color: gold;
+        border-radius: 10px;
+        padding: 10px;
+        font-weight: bolder;
+        border-style: double;
+      }
+      #startBtn:hover {
+        background-color: goldenrod;
+      }
+      #startBtn:active {
+        background-color: brown;
+        transition: ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="traffic">
+        <div class="box" id="stop"></div>
+        <div class="box" id="ready"></div>
+        <div class="box" id="go"></div>
+      </div>
+      <div class="timer">
+        <h1>TIMER</h1>
+        <h1 id="countdown" style="padding-left: 20px">1: 00</h1>
+        <button onclick="startTimer()" id="startBtn">START</button>
+      </div>
+      <div class="traffic">
+        <div class="box" id="go1"></div>
+        <div class="box" id="ready1"></div>
+        <div class="box" id="stop1"></div>
+      </div>
+    </div>
+
+    <script>
+      //define/get time, fuction to change inner of time &display --,set
+      //set interal of change
+      const startingMinutes = 1;
+      let time = startingMinutes * 60;
+      timerId = null;
+
+      const countdown = document.getElementById("countdown");
+      const boxes = document.querySelectorAll(".box");
+
+      function startTimer() {
+        if (timerId !== null) return;
+        timerId = setInterval(updateCountdown, 1000);
+      }
+
+      function resetColors() {
+        boxes.forEach((box) => {
+          box.classList.remove("stop", "ready", "go");
+        });
+      }
+
+      // const updateCountdown = () => {
+      function updateCountdown() {
+        const minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        countdown.innerHTML = `${minutes}: ${seconds}`;
+
+        //funct to reset boxes class. remove all class list. run f , ifelse for change get id, addcorrect class
+        resetColors();
+
+        if (seconds <= 59 && seconds >= 30) {
+          document.getElementById("stop").classList.add("stop");
+        } else if (seconds <= 30 && seconds >= 25) {
+          document.getElementById("ready").classList.add("ready");
+        } else if (seconds <= 25 && seconds > 0) {
+          document.getElementById("go").classList.add("go");
+        }
+
+         if (seconds <= 59 && seconds >= 30) {
+          document.getElementById("stop1").classList.add("stop");
+        } else if (seconds <= 30 && seconds >= 25) {
+          document.getElementById("ready1").classList.add("ready");
+        } else if (seconds <= 25 && seconds > 0) {
+          document.getElementById("go1").classList.add("go");
+        }
+        // for timer to reset after countdown
+        if (time <= 0) {
+          clearInterval(timerId);
+          timerId = null;
+
+          time = startingMinutes * 60;
+          countdown.innerHTML = "1:00";
+          return;
+        }
+        time--;
+        //cpould have used a query selectorAll to make it only one ifelse statement
+      }
+    </script>
+  </body>
+</html>
