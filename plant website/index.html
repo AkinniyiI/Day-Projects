@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Life</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/ico" href="favicon.ico.png"/>
+  </head>
+  <body>
+    <header>
+      <div id="sidenav">
+        <span>
+          <a>About</a>
+          <a>Services</a>
+          <a>Contacts</a>
+        </span>
+        <span style="cursor: pointer" onclick="closeNav()"> X </span>
+      </div>
+      <nav class="navbar">
+        <div class="navbar-left">
+          <span
+            href="#"
+            style="font-size: 25px; cursor: pointer"
+            onclick="openNav()"
+          >
+            &#9776;</span
+          >
+          <h1>PlantLife</h1>
+          <img class="plant-logo" src="plant logo-Photoroom.png" />
+        </div>
+
+        <div class="navbar-right">
+          <div>About</div>
+          <div class="dropdown">
+            <button>Services</button>
+            <div class="content">
+              <a href="#">Planting</a>
+              <a href="#">Rooting</a>
+              <a href="#">Seeding</a>
+            </div>
+          </div>
+          <div>Contact</div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="main-text">
+        <h1>We are interested in your Plant Life</h1>
+        <p>Fill your curiousity below, shall we?</p>
+      </div>
+      <div class="card-container">
+        <div class="card-row-1">
+          <div class="card">
+            <img src="Abelia grandiflora.jpg" />
+            <h4>Abelia grandiflora</h4>
+            <p>
+              belia grandiflora <br />
+              dudigugoeb
+            </p>
+          </div>
+          <div class="card">
+            <img src="Abelmoschus manihot.jpg" />
+            <h4>Abelmoschus manihot</h4>
+            <p>
+              Abelmoschus manihot <br />
+              dudigugoeb
+            </p>
+          </div>
+        </div>
+        <div class="card-row-1">
+          <div class="card">
+            <img src="Abutilon pictum.jpg" />
+            <h4>Abutilon pictum</h4>
+            <p>
+              Abutilon pictum <br />
+              dudigugoeb
+            </p>
+          </div>
+          <div class="card">
+            <img src="Acca sellowiana.jpg" />
+            <h4>Acca sellowiana</h4>
+            <p>
+              Acca sellowiana <br />
+              dudigugoeb
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-main">
+        <h2>Need Help</h2>
+        <p>info@plantlife.com</p>
+      </div>
+      <div class="footer-sub">
+        <h3>Navigation</h3>
+        <ul>
+          <li>Home</li>
+          <li>Blog</li>
+          <li>FAQ</li>
+          <li>About</li>
+        </ul>
+      </div>
+      <div class="footer-sub">
+        <h3>Social Media</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>LinkedIN</li>
+        </ul>
+      </div>
+      <div class="footer-sub">
+        <h3>Contact Info</h3>
+        <span>
+          15 Allen Avenue <br />
+          Ikeja, Lagos <br />
+          60983
+        </span>
+      </div>
+    </footer>
+        <div class="copyright">
+          <P>2026 © PlantLife, all rights reserved</P>
+        </div>
+    <script>
+      const sidenav = document.getElementById("sidenav");
+
+      function openNav() {
+        sidenav.style.width = "250px";
+      }
+
+      function closeNav() {
+        sidenav.style.width = "0px";
+      }
+    </script>
+  </body>
+</html>
